@@ -15,7 +15,7 @@ function writePassword() {
 }
 
 function generatePassword() {
-
+  var password = "";
   var passLength = Number(prompt("How many characters would you like your password to be?"));
 
   while (isNaN(passLength) || passLength < 8 || passLength > 128) passLength = Number(prompt("Choose a password length between 8 and 128. How many characters would you like your password to be?"));
@@ -34,6 +34,7 @@ function generatePassword() {
     symbol = confirm("Would you like to use special characters?");
   }
 
+  //use .split here to make this actually work
   var allowed = [];
 
   if (upper) {
@@ -49,8 +50,8 @@ function generatePassword() {
     allowed += "!@#$%^&*(){}[]=<>/,.";
   }
 
-  for (let i = passLength; i < passLength; i++) { 
-    password += characters.charAt(Math.floor(Math.random()*characters.length));
+  for (let i = 0; i < passLength; i++) { 
+    password += allowed.charAt(Math.floor(Math.random()*allowed.length));
   }
 
   console.log(password);
