@@ -36,37 +36,33 @@ function generatePassword() {
 
   //use .split here to make this actually work
   var allowed = [];
-  var uppers = "";
-  var lowers = "";
-  var numbers = "";
-  var specials = "";
+  var uppers = "QWERTYUIOPASDFGHJKLZXCVBNM";
+  var lowers = "qwertyuiopasdfghjklzxcvbnm";
+  var numbers = "0123456789";
+  var specials = "!@#$%^&*(){}[]=<>/,.";
   var count = 0;
 
   if (upper) {
-    uppers = "QWERTYUIOPASDFGHJKLZXCVBNM";
     allowed += uppers;
-    password += uppers.charAt(Math.floor(Math.random() * 25));
+    password += uppers.charAt(Math.floor(Math.random() * uppers.length));
     count++;
     console.log(password);
   }
   if (lower) {
-    lowers = "qwertyuiopasdfghjklzxcvbnm";
     allowed += lowers;
-    password += lowers.charAt(Math.floor(Math.random() * 25));
+    password += lowers.charAt(Math.floor(Math.random() * lowers.length));
     count++;
     console.log(password);
   }
   if (number) {
-    numbers = "0123456789";
     allowed += numbers;
-    password += numbers.charAt(Math.floor(Math.random() * 9));
+    password += numbers.charAt(Math.floor(Math.random() * numbers.length));
     count++;
     console.log(password);
   }
   if (symbol) {
-    specials = "!@#$%^&*(){}[]=<>/,.";
     allowed += specials;
-    password += specials.charAt(Math.floor(Math.random() * 20));
+    password += specials.charAt(Math.floor(Math.random() * specials.length));
     count++;
     console.log(password);
   }
