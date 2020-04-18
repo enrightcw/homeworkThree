@@ -26,7 +26,7 @@ function generatePassword() {
   var number = confirm("Would you like to use numbers?");
   var symbol = confirm("Would you like to use special characters?");
   
-  while (!upper && !lower && !number && !symbols) {
+  while (!upper && !lower && !number && !symbol) {
     alert("You must select at least one character type!");
     upper = confirm("Would you like to use uppercase letters?");
     lower = confirm("Would you like to use lowercase letters?");
@@ -36,21 +36,42 @@ function generatePassword() {
 
   //use .split here to make this actually work
   var allowed = [];
+  var uppers = "";
+  var lowers = "";
+  var numbers = "";
+  var specials = "";
+  var count = 0;
 
   if (upper) {
-    allowed += "QWERTYUIOPASDFGHJKLZXCVBNM";
+    uppers = "QWERTYUIOPASDFGHJKLZXCVBNM";
+    allowed += uppers;
+    password += uppers.charAt(Math.floor(Math.random() * 25));
+    count++;
+    console.log(password);
   }
   if (lower) {
-    allowed += "qwertyuiopasdfghjklzxcvbnm";
+    lowers = "qwertyuiopasdfghjklzxcvbnm";
+    allowed += lowers;
+    password += lowers.charAt(Math.floor(Math.random() * 25));
+    count++;
+    console.log(password);
   }
   if (number) {
-    allowed += "0123456789";
+    numbers = "0123456789";
+    allowed += numbers;
+    password += numbers.charAt(Math.floor(Math.random() * 9));
+    count++;
+    console.log(password);
   }
   if (symbol) {
-    allowed += "!@#$%^&*(){}[]=<>/,.";
+    specials = "!@#$%^&*(){}[]=<>/,.";
+    allowed += specials;
+    password += specials.charAt(Math.floor(Math.random() * 20));
+    count++;
+    console.log(password);
   }
 
-  for (let i = 0; i < passLength; i++) { 
+  for (count; count < passLength; count++) { 
     password += allowed.charAt(Math.floor(Math.random()*allowed.length));
   }
 
